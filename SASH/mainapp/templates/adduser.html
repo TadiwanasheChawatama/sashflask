@@ -1,0 +1,201 @@
+
+{% extends "admin.html" %}
+{% block title %}{{title}}{%endblock title%}
+{% block content %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" class="session-form">
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3">User Details</legend>
+        </fieldset>
+        <div class="row">
+            <div class="input50">
+                {{ form.firstname.label(class="form-control-label")}}
+                {% if form.firstname.errors%}
+                {{ form.firstname(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.firstname.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.firstname(class="form-control")}}
+            {%endif%}
+            </div>
+            <div class="input50">
+                {{ form.lastname.label(class="form-control-label")}}
+                {% if form.lastname.errors%}
+                {{ form.lastname(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.lastname.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.lastname(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input50">
+                {{ form.date_of_birth.label(class="form-control-label")}}
+                {% if form.date_of_birth.errors%}
+                {{ form.date_of_birth(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.date_of_birth.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.date_of_birth(class="form-control")}}
+            {%endif%}
+            </div>
+            <div class="input50">
+                {{ form.gender.label(class="form-control-label")}}
+                {% if form.gender.errors%}
+                {{ form.gender(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.gender.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.gender(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.phonenumber.label(class="form-control-label")}}
+                {% if form.phonenumber.errors%}
+                {{ form.phonenumber(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.phonenumber.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.phonenumber(class="form-control")}}
+            {%endif%}
+            </div>
+            {% if password %}
+            <div class="input100">
+                {{ form.email.label(class="form-control-label")}}
+                {% if form.email.errors%}
+                {{ form.email(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.email.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.email(class="form-control")}}
+            {%endif%}
+            </div>
+           
+            <div class="input100">
+                {{ form.password.label(class="form-control-label")}}
+                {% if form.password.errors%}
+                {{ form.password(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.password.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.password(class="form-control")}}
+            {%endif%}
+            </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.address.label(class="form-control-label")}}
+                {% if form.address.errors%}
+                {{ form.address(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.address.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.address(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.role.label(class="form-control-label")}}
+                {% if form.role.errors%}
+                {{ form.role(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.role.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.role(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.contract.label(class="form-control-label")}}
+                {% if form.contract.errors%}
+                {{ form.contract(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.contract.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.contract(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.personal_doc.label(class="form-control-label")}}
+                {% if form.personal_doc.errors%}
+                {{ form.personal_doc(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.personal_doc.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.personal_doc(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input100">
+                {{ form.academic_transcripts.label(class="form-control-label")}}
+                {% if form.academic_transcripts.errors%}
+                {{ form.academic_transcripts(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.academic_transcripts.errors%}
+                        <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+            {%else%}
+            {{ form.academic_transcripts(class="form-control")}}
+            {%endif%}
+            </div>
+        </div>
+   
+        <div class="row">
+            <div class="input100">
+                {{ form.submit(class="form-control btn-primary")}}
+            </div>
+        </div>
+    </form>
+</div>
+
+  {% endblock content%}
+ 
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}

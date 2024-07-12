@@ -1,0 +1,98 @@
+
+{% extends "admin.html" %}
+{% block title %}Help Center{%endblock title%}
+{% block content %}
+<div class="container">
+    <div class="article_search">
+      <div class="search-bar">
+        <span class="search-icon material-icons-sharp">search</span>
+        <input type="search" id="searchhelp" placeholder="Search Articles" class="search-input">
+      </div>
+    </div>
+    <div class="articles-container">
+      <h3>All Help Articles</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Getting Started with SASH</td>
+            <td>Getting Started</td>
+            <td>Published</td>
+            <td>
+              <a href="#" class="edit-btn"><i class="material-icons">edit</i></a>
+              <a href="#" class="delete-btn"><i class="material-icons">delete</i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Scheduling Appointments</td>
+            <td>Scheduling</td>
+            <td>Draft</td>
+            <td>
+              <a href="#" class="edit-btn"><i class="material-icons">edit</i></a>
+              <a href="#" class="delete-btn"><i class="material-icons">delete</i></a>
+            </td>
+          </tr>
+          <!-- Add more help article rows here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="new-article-container">
+      <h3>Create New Help Article</h3>
+      <form action="" method="POST">
+        {{form.hidden_tag()}}
+        <div>
+          {{ form.title.label(class="form-control-label")}}
+          {% if form.title.errors%}
+          {{ form.title(class="form-control is-invalid")}}
+              <div class="invalid-feedback">
+                  {%for error in form.title.errors%}
+                  <span>{{error}}</span>
+                  {%endfor%}
+              </div>
+      {%else%}
+      {{ form.title(class="form-control")}}
+      {%endif%}
+        </div>
+        <div>
+          {{ form.subject.label(class="form-control-label")}}
+          {% if form.subject.errors%}
+          {{ form.subject(class="form-control is-invalid")}}
+              <div class="invalid-feedback">
+                  {%for error in form.subject.errors%}
+                  <span>{{error}}</span>
+                  {%endfor%}
+              </div>
+      {%else%}
+      {{ form.subject(class="form-control")}}
+      {%endif%}
+        </div>
+        <div>
+          {{ form.article.label(class="form-control-label")}}
+          {% if form.article.errors%}
+          {{ form.article(class="form-control is-invalid")}}
+              <div class="invalid-feedback">
+                  {%for error in form.article.errors%}
+                  <span>{{error}}</span>
+                  {%endfor%}
+              </div>
+      {%else%}
+      {{ form.article(class="form-control")}}
+      {%endif%}
+        </div>
+        {{ form.submit(class="form-control btn-primary")}}
+      </form>
+    </div>
+  </div>
+  {% endblock content%}
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}

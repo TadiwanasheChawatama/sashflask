@@ -1,0 +1,84 @@
+{% extends 'admin.html' %}
+
+{% block title %}
+  TimeTable Form
+{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <table class="mb-3">
+      <tr>
+        <th>Day</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+      {% if client.timetables %}
+        {% for entry in client.timetables %}
+          <tr>
+            <td>{{ entry.day }}</td>
+            <td>{{ entry.start_time }}</td>
+            <td>{{ entry.end_time }} 
+              <span class="material-icons" data-bs-toggle="modal" data-bs-target="#deleteModal">delete</span>
+            </td>
+          </tr>
+          <!-- Modal -->
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">
+                    <a href="{{ url_for('delete_timetable', timetable_id=entry.id, client_id=client.id) }}">delete</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="3">No Timetimes</td>
+        </tr>
+      {% endif %}
+    </table>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group border p-2">
+        <legend class="border-bottom mb-3">Add Time Table</legend>
+        <table class="table table-striped">
+          <tr class="tbl-tr-flex">
+            <th scope="row" class="form-control-label">
+              <p class="form-control-label">Day</p>
+            </th>
+            <td>{{ form.day(class="form-control") }}</td>
+          </tr>
+          <tr class="tbl-tr-flex">
+            <th scope="row" class="form-control-label">
+              <p class="form-control-label">Start Time</p>
+            </th>
+            <td>{{ form.start_time(class="form-control") }}</td>
+          </tr>
+          <tr class="tbl-tr-flex">
+            <th scope="row" class="form-control-label">
+              <p class="form-control-label">End Time</p>
+            </th>
+            <td>{{ form.end_time(class="form-control") }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" value="Add Time Slot" class="btn btn-primary">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <!-- Add any custom scripts here -->
+{% endblock scripts %}

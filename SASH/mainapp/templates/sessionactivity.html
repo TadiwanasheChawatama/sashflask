@@ -1,0 +1,95 @@
+{% extends 'admin.html' %}
+{% block title %} Session Activity{%endblock title%}
+{% block content %}
+<div class="container">
+ 
+  <form method="post" class="session-form">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-3">Session Activity Details</legend>
+  </fieldset>
+    <div class="mb-3">
+      <label for="{{ form.session_date.id }}" class="form-label">{{ form.session_date.label.text }}</label>
+      {{ form.session_date(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.overview.id }}" class="form-label">{{ form.overview.label.text }}</label>
+      {{ form.overview(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.goals.id }}" class="form-label">{{ form.goals.label.text }}</label>
+      {{ form.goals(class="form-control") }}
+    </div>
+    <div id="activities-container">
+      <h4>Activities</h4>
+      {% for activity_form in form.activities %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="activity_name_{{ loop.index0 }}" class="form-label">{{ activity_form.activity_name.label.text }}</label>
+            {{ activity_form.activity_name(id="activity_name_{{ loop.index0 }}", class="form-control") }}
+          </div>
+          <div class="mb-3">
+            <label for="activity_description_{{ loop.index0 }}" class="form-label">{{ activity_form.activity_description.label.text }}</label>
+            {{ activity_form.activity_description(id="activity_description_{{ loop.index0 }}", class="form-control") }}
+          </div>
+          <div class="mb-3">
+            <label for="progress_{{ loop.index0 }}" class="form-label">{{ activity_form.progress.label.text }}</label>
+            {{ activity_form.progress(id="progress_{{ loop.index0 }}", class="form-control") }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+      <div class="text-end">
+        <button type="button" class="btn btn-primary" id="add-activity">Add Activity</button>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.notes.id }}" class="form-label">{{ form.notes.label.text }}</label>
+      {{ form.notes(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.recommendations.id }}" class="form-label">{{ form.recommendations.label.text }}</label>
+      {{ form.recommendations(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+
+{% endblock %}
+
+
+
+{% block scripts%}
+<script>
+  const activitiesContainer = document.getElementById('activities-container');
+  const addActivityButton = document.getElementById('add-activity');
+  let activityIndex = 2;
+  
+  addActivityButton.addEventListener('click', () => {
+    const newActivityTemplate = `
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="activities-${activityIndex}-activity_name" class="form-label">Activity Name</label>
+            <input type="text" class="form-control" name="activities-${activityIndex}-activity_name">
+          </div>
+          <div class="mb-3">
+            <label for="activities-${activityIndex}-activity_description" class="form-label">Activity Description</label>
+            <textarea class="form-control" name="activities-${activityIndex}-activity_description"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="activities-${activityIndex}-progress" class="form-label">Progress</label>
+            <textarea class="form-control" name="activities-${activityIndex}-progress"></textarea>
+          </div>
+        </div>
+      </div>
+    `;
+  
+    const newActivity = document.createElement('div');
+    newActivity.innerHTML = newActivityTemplate;
+    activitiesContainer.insertBefore(newActivity, addActivityButton.parentNode);
+    activityIndex++;
+  });
+</script>
+{% endblock scripts %}

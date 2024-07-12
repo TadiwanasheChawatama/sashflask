@@ -1,0 +1,54 @@
+{% extends "admin.html" %}
+{% block title %}SASH Users{%endblock title%}
+{% block content %}
+
+  <div class="student_search">
+    <div class="search-bar">
+      <div>
+        <span class="search-icon material-icons-sharp">search</span>
+        <input type="search" id="searchclient" placeholder="Search Clients" class="search-input">
+      </div>
+      <div>
+        <label for="searchbyclient" class="search-label">Search by:</label>
+        <select name="searchbyclient" id="searchbyclient" class="search-select">
+          <option value="all">Role</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <table class="tbl-list">
+    <thead>
+        <tr>
+            <th>#ID</th>
+            <th><span class="las la-sort"></span> FULLNAME</th>
+            <th class="tbl-collapse"><span class="las la-sort"></span> ROLE</th>
+            <th><span class="las la-sort"></span> ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for user in all_users%}
+      <tr>
+        <td>#3023</td>
+        <td>
+              <h4>{{user.firstname}} {{user.lastname}}</h4>
+        </td>
+        <td class="tbl-collapse">
+          <h4>{{user.role}}</h4>
+        </td>
+        <td>
+          <div class="tbl-actions">
+            <a href="{{url_for('userprofile', user_id = user.id)}}"><span class="material-icons">visibility</span></a>
+            <a href=""><span class="material-icons-sharp">delete</span></a>
+          </div>
+        </td>
+      </tr>    
+      {% endfor%}    
+    </tbody>
+</table>
+  {% endblock content%}
+  
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}

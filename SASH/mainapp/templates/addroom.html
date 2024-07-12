@@ -1,0 +1,60 @@
+
+{% extends "admin.html" %}
+{% block content %}
+
+
+    <div class="blur"></div>
+     <h1 class="form-header">Add Room</h1>
+    
+     <form method="POST" action="" >
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3">Room Details</legend>
+        </fieldset>
+     <div class="row">
+         <div class="input100">
+            {{ form.room_name.label(class="form-control-label")}}
+            {% if form.room_name.errors%}
+            {{ form.room_name(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                    {%for error in form.room_name.errors%}
+                    <span>{{error}}</span>
+                    {%endfor%}
+                </div>
+        {%else%}
+        {{ form.room_name(class="form-control")}}
+        {%endif%}
+         </div>
+     </div>
+     <div class="row">
+         <div class="input100">
+            {{ form.room_number.label(class="form-control-label")}}
+            {% if form.room_number.errors%}
+            {{ form.room_number(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                    {%for error in form.room_number.errors%}
+                    <span>{{error}}</span>
+                    {%endfor%}
+                </div>
+        {%else%}
+        {{ form.room_number(class="form-control")}}
+        {%endif%}
+         </div>
+     </div>
+     <div class="row">
+         <div class="input100">
+            {{ form.submit(class="form-control btn-primary")}}
+         </div>
+     </div>
+     </form>
+
+ 
+
+
+  {% endblock content%}
+  
+
+  {% block scripts%}
+    <script>
+    </script>
+  {% endblock scripts %}

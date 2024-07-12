@@ -1,0 +1,74 @@
+{% extends "admin.html" %}
+{% block title %}Client`s Profile{%endblock title%}
+{% block content %}
+<div class="client-details-container">
+  <div class="client-info">
+    <img src="{{url_for('static', filename='images/user.png')}}" alt="">
+    <h2>{{client.firstname}} {{client.lastname}}</h2>
+    {% if not client.user_therapist %}
+    <div class="alert alert-danger" role="alert">
+      Assign Therapist
+    </div>
+    {% endif %}
+    <p>Diagnosis: </p>
+    <p>{{client.diagnosis}}</p>
+    <a href="{{url_for('clientprofileinfo', client_id = client.id)}}" class="btn-link black" >View More</a>
+    <div class="user-progress">
+      <h5>Progress</h5>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 70%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="session-cards-container">
+    <div class="session-cards-header">
+      <h3>Sessions</h3>
+      <div class="session-tabs">
+        {% if client.user_therapist %}
+          <a href="{{url_for('scheduleclientsession', client_id = client.id)}}" class="badge">
+            <span class="material-icons-sharp"  >add</span>
+          </a>
+        {%endif%}
+        <a href="{{url_for('sessionmenu')}}" type="button" class="session-tab">All</a>
+      </div>
+    </div>
+    <div class="session-cards">
+      {%if client.sessions%}
+        {% for session in client.sessions %}
+          <div class="session-card">
+            <div class="session-card-header">
+              <h4>{{session.diagnosis}}</h4>
+              <p>{{session.date}} | {{session.start_time}} - {{session.end_time}}</p>
+            </div>
+            <div class="session-card-body">
+              <p>Therapist:  {{session.session_therapist.firstname +"  "+ session.session_therapist.lastname}}</p>
+              <p>{{session.room_id}}</p>
+            </div>
+            {%if session.activities%}
+            <div class="session-card-footer">
+              <a href="{{url_for('sessiondetails', session_id=session.id, client_id=client.id)}}" class="btn btn-primary">View Details</a>
+            </div>
+            {%else%}
+            <div class="session-card-footer">
+              <a href="{{url_for('sessionactivity', session_id=session.id, client_id=client.id)}}" class="btn btn-primary">Add Report</a>
+            </div>
+            {%endif%}
+          </div>
+        {%endfor%}
+      {%else%}
+          <div class="session-card">
+            <span>No Sessions </span>
+          </div>
+      {%endif%}
+      <hr>
+      <a href="{{url_for('timetable', client_id = client.id)}}" class="btn-link black">TimeTable</a>
+    </div>
+  </div>
+</div>
+{% endblock content%}
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

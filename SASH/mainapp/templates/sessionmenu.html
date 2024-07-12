@@ -1,0 +1,83 @@
+
+{% extends "admin.html" %}
+{% block title %}Session Menu{%endblock title%}
+{% block content %}
+<div class="student_search">
+  <div class="search-bar">
+    <div>
+      <span class="search-icon material-icons-sharp">search</span>
+      <input type="search" id="searchsess" placeholder="Search Session" class="search-input">
+    </div>
+    <div>
+      <label for="searchBy" class="search-label">Search by:</label>
+      <select name="search-by" class="search-select">
+        <option value="all" selected>All Sessions</option>
+        <option value="name">Therapist</option>
+        <option value="grade">Title</option>
+        <option value="id">Date</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- New section for buttons -->
+<div class="session-main upcoming-sessions">
+  <h2>Upcoming Sessions</h2>
+  <div class="session-card">
+    <div class="session-details-menu">
+      <h3>Speech Therapy Session - John Doe</h3>
+      <p>2024-06-25 | 2:00 PM - 3:00 PM</p>
+      <p>Therapist: Jane Smith</p>
+    </div>
+    <div class="session-actions">
+      <a href="{{url_for('sessionactivity')}}" class="session-btn view-btn"><i class="material-icons">visibility</i> </a>
+      <a href="{{url_for('scheduleclientsession')}}" class="session-btn edit-btn"><i class="material-icons">edit</i></a>
+      <a href="#" class="session-btn delete-btn"><i class="material-icons">delete</i></a>
+    </div>
+  </div>
+  <div class="session-card">
+    <div class="session-details-menu">
+      <h3>Group Speech Therapy - Lincoln Elementary School</h3>
+      <p>2024-07-01 | 9:00 AM - 10:00 AM</p>
+      <p>Therapist: John Doe</p>
+    </div>
+    <div class="session-actions">
+      <a href="{{url_for('sessionactivity')}}" class="session-btn view-btn"><i class="material-icons">visibility</i> </a>
+      <a href="{{url_for('scheduleclientsession')}}" class="session-btn edit-btn"><i class="material-icons">edit</i></a>
+      <a href="#" class="session-btn delete-btn"><i class="material-icons">delete</i></a>
+    </div>
+  </div>
+</div>
+
+<div class="session-main previous-sessions">
+  <h2>Previous Sessions</h2>
+  <div class="session-card">
+    <div class="session-details-menu">
+      <h3>Speech Therapy Session - Jane Doe</h3>
+      <p>2024-06-15 | 3:00 PM - 4:00 PM</p>
+      <p>Therapist: John Doe</p>
+    </div>
+    <div class="session-actions">
+      <a href="{{url_for('sessiondetails')}}" class="session-btn view-btn"><i class="material-icons">visibility</i> </a>
+      <a href="#" class="session-btn delete-btn"><i class="material-icons">delete</i></a>
+    </div>
+  </div>
+  <div class="session-card">
+    <div class="session-details-menu">
+      <h3>Group Speech Therapy - Lincoln Elementary School</h3>
+      <p>2024-06-01 | 9:00 AM - 10:00 AM</p>
+      <p>Therapist: Jane Smith</p>
+    </div>
+    <div class="session-actions">
+      <a href="{{url_for('sessiondetails')}}" class="session-btn view-btn"><i class="material-icons">visibility</i> </a>
+      <a href="#" class="session-btn delete-btn"><i class="material-icons">delete</i ></a>
+    </div>
+  </div>
+</div>
+{% endblock content%}
+
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

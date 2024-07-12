@@ -1,0 +1,65 @@
+
+{% extends "admin.html" %}
+{% block title %}Session Info{%endblock title%}
+{% block content %}
+
+<div class="session-details">
+    <h2>Session #{{session.id}} - {{session.date}}</h2>
+    <div class="session-overview">
+      <h3>Overview</h3>
+      <p>{{activity.overview}}</p>
+    </div>
+  
+    <div class="session-goals">
+      <h3>Goals</h3>
+      <ul>
+        {%if goals%}
+          {%for goal in goals%}
+            <li>{{goal}}</li>
+          {%endfor%}
+        {%else%}
+          <li>No Goals</li>
+        {%endif%}
+      </ul>
+    </div>
+  
+    <div class="session-activities">
+      <h3>Activities</h3>
+      {%if activities%}
+        {%for item in activities%}
+          <div class="activity-card">
+            <h4>{{item.activity_name}}</h4>
+            <p>{{item.activity_description}}</p>
+            <p><strong>Progress:</strong> {{item.activity_progress}}.</p>
+          </div>
+        {%endfor%}
+      {%else%}
+        <p>No Activities</p>
+      {%endif%}
+    </div>
+  
+    <div class="session-notes">
+      <h3>Notes</h3>
+      <p>{{activity.notes}}</p>
+    </div>
+  
+    <div class="session-recommendations">
+      <h3>Recommendations</h3>
+      <ul>
+        {%if recommendations%}
+          {%for recommendation in recommendations%}
+            <li>{{recommendation}}</li>
+          {%endfor%}
+        {%else%}
+          <li>No Recommendations</li>
+        {%endif%}
+      </ul>
+    </div>
+  </div>
+  {% endblock content%}
+
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}

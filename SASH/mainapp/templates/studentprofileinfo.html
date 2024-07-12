@@ -1,0 +1,78 @@
+
+{% extends "admin.html" %}
+{% block title %}Profile Information{%endblock title%}
+{% block content %}
+
+<div class="single-student" id="single-student">
+  <div class="right">
+    <div class="student-information">
+      <div class="header">
+        <h2>Student Information</h2>
+        <a href="#" class="btn-link black">Edit</a>
+      </div>
+      <div class="student-container">
+        <div class="student-infor">
+          <p><b>Student ID:</b> <span id="studentId">{{student.id}}</span></p>
+          <p><b>Name:</b> <span id="studentName">{{student.firstname}} {{student.lastname}}</span></p>
+          <p><b>Date of Birth:</b> <span id="dateOfBirth"> {{student.date_of_birth}} </span></p>
+          <p><b>Occupation:</b> <span id="gradeLevel">6</span></p>
+          <hr>
+          <h4>Contact Information</h4>
+          <p><b>Spouse's Name:</b> <span id="parentName">{{student.firstname}}</span></p>
+          <p><b>Email:</b> <span id="parentEmail"><a class="btn-link primary" href="mailto:{{student.email}}">{{student.email}}</a></span></p>
+          <p><b>Phone:</b> <span id="parentPhone">{{student.phonenumber}}</span></p>
+        </div>
+
+      <div class="therapist-info">
+        <img src="{{url_for('static', filename='images/user.png')}}" alt="">
+        <h4>Therapist</h4>
+        <div>
+          <h4>Name: Ms T Malcom</h4>
+        </div>
+        <div>
+          <h4>Last Session: 22/03/2024</h4>
+        </div>
+        <div>
+          <p>Completed</p>
+          <small class="txt-color">200/232</small>
+        </div>
+        <button type="button" class="btn-link black">View Therapist</button>
+      </div>
+    </div>
+    </div>
+    <div class="evaluation-cards">
+      <div class="header">
+        <h2>Student's Report [{{report.date}}]</h2>
+        <div>
+          {%if report %}
+            <a href="{{url_for("updatestudentreport", student_id = student.id, report_id=report.id)}}" class="btn-link primary">Update</a>
+            <a href="{{url_for("addstudentreport", student_id = student.id, report_id=report.id)}}" class="btn-link black">Add New</a>
+          {%endif%}
+        </div>
+      </div>
+      {%if report%}
+        {% for report in report.report_text %}
+          {%for key, value in report.items() %}
+            <div class="evaluation-card">
+              <div class="card-header">
+                <h3 class="card-title">{{key}}</h3>
+              </div>
+              <div class="card-content">
+                <p>{{value}}</p>
+              </div>
+            </div>
+          {%endfor%}
+        {%endfor%}
+      {%else%}
+      <span>No Report</span>
+      {%endif%}
+    </div>
+  </div>
+</div>
+{% endblock content%}
+
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

@@ -1,0 +1,102 @@
+
+{% extends "admin.html" %}
+{% block title %}Manage{%endblock title%}
+{% block content %}
+<div class="dashboard-section">
+    <div class="section-header">
+      <h2>User Management</h2>
+      <!-- <a href="{{url_for('adduser')}}" class="btn btn-primary">Add User</a> -->
+    </div>
+    <div class="section-content">
+      <p>Easily create, edit, and delete user accounts for therapists, patients, and administrators. Assign roles and permissions to manage access and privileges.</p>
+      <div class="feature-list">
+        <a href="{{url_for('adduser')}}">
+          <div class="feature" >
+            <i class="material-icons">person_add</i>
+            <h3>Create Users</h3>
+            <p>Add new users with customizable roles and permissions.</p>
+          </div>
+        </a>
+        <a href="{{url_for('addroom')}}">
+          <div class="feature">
+            <i class="material-icons">edit</i>
+            <h3>Add Session Rooms</h3>
+            <p>Manage user profiles and update their settings.</p>
+          </div>
+        </a>
+        <a href="{{url_for('Users')}}">
+          <div class="feature">
+            <i class="material-icons">person_remove</i>
+            <h3>Manage Accounts</h3>
+            <p>Manage user accounts.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-section">
+    <div class="section-header">
+      <h2>Session Management</h2>
+      <!-- <a href="#" class="btn btn-primary">Schedule Session</a> -->
+    </div>
+    <div class="section-content">
+      <p>Easily schedule and manage therapy sessions. View upcoming and past sessions, and assign therapists to sessions.</p>
+      <div class="feature-list">
+        <div class="feature">
+          <i class="material-icons">date_range</i>
+          <h3>Schedule Sessions</h3>
+          <p>Create new therapy sessions and assign therapists.</p>
+        </div>
+        <div class="feature">
+          <i class="material-icons">history</i>
+          <h3>Session History</h3>
+          <p>View a complete history of past therapy sessions.</p>
+        </div>
+        <div class="feature">
+          <i class="material-icons">assignment_ind</i>
+          <h3>Assign Therapists</h3>
+          <p>Easily match therapists with their scheduled sessions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-section">
+    <div class="section-header">
+      <h2>Client Management</h2>
+      <!-- <a href="#" class="btn btn-primary">Add Patient</a> -->
+    </div>
+    <div class="section-content">
+      <p>Manage patient profiles, track their progress, and assign them to therapists.</p>
+      <div class="feature-list">
+        <div class="feature" >
+          <a href="{{url_for('addschool')}}">
+            <i class="material-icons">accessibility</i>
+            <h3>Add School</h3>
+            <p>View and edit patient information and history.</p>
+          </a>
+        </div>
+        <div class="feature" >
+          <a href="{{url_for('addclient')}}">
+            <i class="material-icons">trending_up</i>
+            <h3>Add Client</h3>
+            <p>Monitor and analyze patient progress over time.</p>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="">
+            <i class="material-icons">person</i>
+            <h3>Assign Therapists</h3>
+            <p>Match patients with the best-suited therapists.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content%}
+
+
+
+  {% block scripts%}
+    <script>
+    </script>
+  {% endblock scripts %}

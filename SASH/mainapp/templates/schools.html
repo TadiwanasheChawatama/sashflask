@@ -1,0 +1,63 @@
+
+{% extends "admin.html" %}
+{% block title %}Schools{%endblock title%}
+{% block content %}
+
+  <div class="student_search">
+    <div class="search-bar">
+      <div>
+        <span class="search-icon material-icons-sharp">search</span>
+        <input type="search" id="searchschool" placeholder="Search school" class="search-input">
+      </div>
+      <div>
+        <label for="search" class="search-label">Search by:</label>
+        <select  name="search-by" class="search-select">
+          <option value="all">All Schools</option>
+          <option value="name">Name</option>
+          <option value="grade">ID</option>
+          <option value="id">Location</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  </br>
+  {% for school in schools %}
+  <div class="school-card">
+    <div class="school-info">
+      <div class="school-header">
+        <h2>{{school.school_name}}</h2>
+        <div class="school-id">
+          <p>#932123132</p>
+        </div>
+      </div>
+      <div class="school-stats">
+        <div class="stat">
+          <div>
+            <i class="material-icons">groups</i>
+            <p>213</p>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <i class="material-icons">recent_actors</i>
+            <p>25</p>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <i class="material-icons">class</i>
+            <p>12</p>
+          </div>
+        </div>
+      </div>
+      <a href="{{url_for('specificschool', school_id=school.id)}}" class="btn manage-btn waves-effect waves-light btn"  >Manage School</a>
+    </div>
+  </div>
+  {% endfor %}
+  {% endblock content%}
+
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}

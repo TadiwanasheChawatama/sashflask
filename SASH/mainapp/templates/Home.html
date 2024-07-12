@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="home" class="view-port">
+    <div class="content">
+        <h1>Transformative Therapy Solutions</h1>
+        <p>At SASH, we believe in the power of personalized therapy to facilitate growth, healing, and self-discovery. Our holistic approach empowers individuals to overcome challenges and unlock their full potential.</p>
+    </div>
+</section>
+
+<section id="about">
+    <div class="content">
+        <h2>About SASH</h2>
+        <p>SASH is a leading provider of comprehensive therapy services, offering a diverse range of therapeutic approaches tailored to meet the unique needs of each individual. Our team of highly trained and experienced therapists is dedicated to creating a safe, supportive, and non-judgmental environment where clients can explore their thoughts, emotions, and experiences.</p>
+    </div>
+</section>
+
+<section id="services">
+    <div class="content">
+        <h2>Our Services</h2>
+        <ul class="service-list">
+            <li>
+                <h3>Individual Therapy</h3>
+                <p>Our one-on-one therapy sessions provide a confidential and focused space for individuals to work through personal challenges, develop coping strategies, and achieve their therapeutic goals.</p>
+            </li>
+            <li>
+                <h3>Couples Therapy</h3>
+                <p>Designed to strengthen relationships, our couples therapy sessions facilitate open communication, conflict resolution, and fostering a deeper understanding between partners.</p>
+            </li>
+            <li>
+                <h3>Family Therapy</h3>
+                <p>Family therapy sessions aim to improve family dynamics, resolve conflicts, and strengthen the bonds between family members, promoting a supportive and nurturing environment.</p>
+            </li>
+            <li>
+                <h3>Group Therapy</h3>
+                <p>Our group therapy sessions provide a safe and supportive environment for individuals to share their experiences, learn from others, and develop effective coping mechanisms.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+{% endblock content %}
+
+
+ {% block styles %}
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+
+  
+  /* Home Section */
+  .view-port {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 40px 20px;
+  }
+  
+  /* About Section */
+  #about {
+    background-color: #f8f8f8;
+  }
+  
+  /* Services Section */
+  .service-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+  }
+  
+  .service-list li {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-list li:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+  
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+  }
+  {% endblock styles %}

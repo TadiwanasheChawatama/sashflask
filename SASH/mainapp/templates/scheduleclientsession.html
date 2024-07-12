@@ -1,0 +1,45 @@
+
+{% extends "admin.html" %}
+{% block title %} Schedule Client Session{%endblock title%}
+{% block content %}
+<div class="session-form-container">
+    <form class="session-form" method="POST">
+      {{form.hidden_tag()}}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-3">Session Details</legend>
+    </fieldset>
+      <div class="form-group">
+        {{ form.date.label(class="form-control-label")}}
+        {{ form.date(class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{ form.start_time.label(class="form-control-label")}}
+        {{ form.start_time(class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{ form.end_time.label(class="form-control-label")}}
+        {{ form.end_time(class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{ form.location.label(class="form-control-label")}}
+        {{ form.location(class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{ form.diagnosis.label(class="form-control-label")}}
+        {{ form.diagnosis(class="form-control")}}
+      </div>
+      {{ form.submit(class="form-control btn-primary")}}
+    </form>
+  </div>
+
+  {% endblock content%}
+
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}
+
+
+
+

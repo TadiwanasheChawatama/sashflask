@@ -1,0 +1,39 @@
+
+:root{
+
+
+  --primary-color:#1e6091;
+  --secondary-color: #0b3954;
+
+}
+
+/* modal universal */
+.modal-universal{
+    position: fixed;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-light);
+    display: none;
+  }
+  
+  .modal-universal.active{
+    display: block;
+  }
+  
+  
+  .bg-blur{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    top: 0;
+    left: 0;
+  }
+  .bg-blur.active{
+    display: block;
+  }
+  

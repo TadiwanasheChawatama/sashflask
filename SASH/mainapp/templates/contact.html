@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{%block content%}
+   <section id='section-contact'>
+    <div class="title">
+        <h1>Contact Us</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque maiores, praesentium recusandae magni nobis distinctio accusantium. Ipsam, iure sequi cupiditate neque debitis necessitatibus officiis perferendis iusto, fugit expedita veritatis qui dolores accusamus quidem, enim autem? 
+    </div>
+    <div class="contact">
+        <div class="contact-form">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message[0] }}">
+                  {{ message[1] }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+            <form method="POST">
+                {{form.hidden_tag()}}
+                <h2>Send Mail</h2>
+                <div class="row">
+                    <div class="input50">
+                        <!-- <input type="text" placeholder="First Name" /> -->
+                        {{ form.firstname(class="form-control")}}
+                    </div>
+                    <div class="input50">
+                        <!-- <input type="text" placeholder="Last Name"/> -->
+                        {{ form.lastname(class="form-control")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input50">
+                        <!-- <input type="text" placeholder="Email" /> -->
+                        {{ form.email(class="form-control")}}
+                    </div>
+                    <div class="input50">
+                        <!-- <input type="text" placeholder="Subject" /> -->
+                        {{ form.subject(class="form-control")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input100">
+                        <!-- <textarea placeholder="Message"></textarea> -->
+                        {{ form.message(class="form-control")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input100">
+                        <!-- <button type="submit" class="primary-btn">Submit</button> -->
+                        {{ form.submit(class="form-control btn-primary")}}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="contact-info">
+            <div class="info-box">
+                <img src="images/location.png" alt="" class="contact-icon">
+                <div class="details">
+                    <h4>Address</h4>
+                    <p>7750 Hatcliffe, Harare, Zimbabwe</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <img src="images/@.png" alt="" class="contact-icon">
+                <div class="details">
+                    <h4>Email</h4>
+                    <a href="mailto:daptt@gmail.com">daptt@gmail.com</a>
+                </div>
+            </div>
+            <div class="info-box">
+                <img src="images/call.png" alt="" class="contact-icon">
+                <div class="details">
+                    <h4>Call</h4>
+                    <a href="tel:+263777896194">+263 077 789 6194</a><br>
+                    <a href="tel:+263716257623">+263 071 625 7623</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   </section>
+{%endblock content%}

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" class="{{ 'dark-theme' if session.get('theme', 'light') == 'dark' else '' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SASH DASH</title>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- MATERIAL ICONS CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- STYLES -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"> 
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}"> 
+  <link rel="stylesheet" href="{{url_for('static', filename='css/other.css')}}"> 
+  <style>
+    {% block styles %}
+    {% endblock styles%}
+  </style>
+
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <img src="{{url_for('static', filename='images/sash.png')}}" alt="Logo" class="logo">
+      <div class="profile-area">
+
+        <div class="notify action-btn" id="notifications">
+          <span class="material-icons">notifications</span>
+          <span id="notification-badge-count" class="badge bg-error circle flex-center">10</span>
+        </div>
+        <div class="profile">
+          <div class="profile-photo">
+            <img src="{{profile_image}}" alt="Profile Picture">
+          </div>
+          <div>
+            <h5>{{current_user.email}}</h5>
+            <p>{{current_user.role}}</p>
+          </div>
+          <div class="user-profile-dropdown">
+            <div class="user-profile">
+              <div class="profile-image">
+                <img src="{{profile_image}}" alt="Profile Picture">
+              </div>
+              <div class="profile-details">
+                <h4>User</h4>
+                <p>Manager</p>
+                <ul class="profile-buttons">
+                  <li class="btn-small waves-effect waves-light" id="btn-change-password"><i class="material-icons left" >lock</i>Change Password</li>
+                  <li class="btn-small waves-effect waves-light" id="btn-edit-user"><i class="material-icons left">edit</i>Edit Info</li>
+                  <li class="btn-small waves-effect waves-light" id="settings"><i class="material-icons-sharp">settings</i>Settings</li>
+                  <li class="btn-small waves-effect waves-light" ><a href="{{url_for('logout')}}"><i class="material-icons left">logout</i>Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- END OF BAR -->
+
+  <main>
+    <aside>
+      <div class="sidebar">
+        <a href="{{url_for('Home')}}" class="dash-section active" id="dashboard">
+          <!-- <span class="material-icons-sharp">dashboard</span> -->
+          <h4>Dashboard</h4>
+        </a>
+        <a href="{{url_for('manage')}}" class="dash-section" id="manage">
+          <!-- <span class="material-icons-sharp">settings</span> -->
+          <h4>Manage</h4>
+        </a>
+        <a href="{{url_for('schools')}}" class="dash-section" id="schools">
+          <!-- <span class="material-icons-sharp">school</span> -->
+          <h4>Schools</h4>
+        </a>
+        <a href="{{url_for('students')}}" class="dash-section" id="students">
+          <!-- <span class="material-icons-sharp">groups</span> -->
+          <h4>Students</h4>
+        </a>
+        <a href="{{url_for('clients')}}" class="dash-section" id="users">
+          <!-- <span class="material-icons-sharp">person</span> -->
+          <h4>Clients</h4>
+        </a>
+        <a href="{{url_for('analytics')}}" class="dash-section" id="analytics">
+          <!-- <span class="material-icons-sharp">pie_chart</span> -->
+          <h4>Analytics</h4>
+        </a>
+        <a href="{{url_for('messages')}}" class="dash-section" id="messages">
+          <!-- <span class="material-icons-sharp">message</span> -->
+          <h4>Messages</h4>
+        </a>
+        <a href="{{url_for('help_center')}}" class="dash-section" id="help-center">
+          <!-- <span class="material-icons-sharp">help_center</span> -->
+          <h4>Help Center</h4>
+        </a>
+
+      </div>
+      <!-- END OF SIDEBAR -->
+    </aside>
+    <!-- END OF ASIDE -->
+
+    <section class="middle" id='middle'>
+      <div class="header">
+        <h1>{%block title%}Dashboard{%endblock title%}</h1>
+        <div class="overview-date">
+
+          <input type="date" title='date' value={{current_date}} readonly>
+          <i class="material-icons" id="btn-all-sessions">event_available</i>
+        </div>
+      </div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message[0] }}">
+            {{ message[1] }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+      <div class="middle-inner active" id="dashboard-content" >
+        {% block content %}
+        <div class="dashboard-inner-content">
+          <div>
+
+
+            <div class="cards" id="cards">
+              <a href="{{url_for('sessionmenu')}}">
+                <div class="card" >
+                  <div class="content">
+                    <div class="num">90</div>
+                    <div class="name">Sessions</div>
+                  </div>
+                  <div class="icons">
+                      <i class="fas fa-users"></i>
+                  </div>
+                </div>
+              </a>
+              <!-- END CARD 1 -->
+              <a href="{{url_for('students')}}">
+                <div class="card" >
+                  <div class="content">
+                    <div class="num">13000</div>
+                    <div class="name">Students</div>
+                  </div>
+                  <div class="icons">
+                      <i class="fas fa-user-graduate"></i>
+                  </div>
+                </div>
+              </a>
+              <!-- END CARD 2 -->
+               <a href="{{url_for('clients')}}">
+              <div class="card" >
+                <div class="content">
+                  <div class="num">502</div>
+                  <div class="name">Individuals</div>
+                </div>
+                <div class="icons">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+              </div>
+              </a>
+              <!-- END CARD 3 -->
+            </div>
+            <!-- END OF CARDS -->
+
+            <div class="monthly-report">
+              <div class="report">
+                <h3>Sessions Completed</h3>
+                <div>
+                  <details>
+                    <h1>142</h1>
+                    <h6 class="success">+5.2%</h6>
+                  </details>
+                  <p class="text-muted">Compared to 135 last month</p>
+                </div>
+              </div>
+              <div class="report">
+                <h3>Donations Received</h3>
+                <div>
+                  <details>
+                    <h1>$12,840</h1>
+                    <h6 class="success">+3.7%</h6>
+                  </details>
+                  <p class="text-muted">Compared to $12,400 last month</p>
+                </div>
+              </div>
+              <div class="report">
+                <h3>Clients Served</h3>
+                <div>
+                  <details>
+                    <h1>87</h1>
+                    <h6 class="danger">-2.2%</h6>
+                  </details>
+                  <p class="text-muted">Compared to 89 last month</p>
+                </div>
+              </div>
+            </div>
+            <!-- END OF MONTLY REPORT -->
+
+          
+            <div class="fast-payment">
+              <h2>Volunteer Opportunities</h2>
+              <div class="badges">
+                <div class="badge">
+                  <span class="material-icons-sharp">add</span>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>Group Therapy</h5>
+                    <h4>2 hrs</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-success"></span>
+                  <div>
+                    <h5>Administrative</h5>
+                    <h4>4 hrs</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>Outreach</h5>
+                    <h4>3 hrs</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-danger"></span>
+                  <div>
+                    <h5>Fundraising</h5>
+                    <h4>6 hrs</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="fast-payment">
+              <h2>Donation Options</h2>
+              <div class="badges">
+                <div class="badge">
+                  <span class="material-icons-sharp">add</span>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>One-Time Donation</h5>
+                    <h4>$50</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-success"></span>
+                  <div>
+                    <h5>Monthly Donation</h5>
+                    <h4>$25</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>Sponsor a Session</h5>
+                    <h4>$75</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-danger"></span>
+                  <div>
+                    <h5>Scholarship Fund</h5>
+                    <h4>$100</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          
+          
+          
+            <div class="fast-payment">
+              <h2>Client Service Packages</h2>
+              <div class="badges">
+                <div class="badge">
+                  <span class="material-icons-sharp">add</span>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>Individual Therapy</h5>
+                    <h4>$100/session</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-success"></span>
+                  <div>
+                    <h5>Group Therapy</h5>
+                    <h4>$50/session</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-primary"></span>
+                  <div>
+                    <h5>Family Therapy</h5>
+                    <h4>$150/session</h4>
+                  </div>
+                </div>
+                <div class="badge">
+                  <span class="bg-danger"></span>
+                  <div>
+                    <h5>Couples Therapy</h5>
+                    <h4>$125/session</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END OF FAST PAYMENT -->
+          
+            <canvas id="chart"></canvas>
+
+
+
+          </div>
+
+          <div class="dash-right" id="dash-right">
+            
+            <div class="session-main upcoming-sessions">
+              <h2>Upcoming Sessions</h2>
+              <div class="session-card">
+                <div class="session-details-menu">
+                  <h3>Speech Therapy Session <br> John Doe</h3>
+                  <p>2024-06-25 | 2:00 PM - 3:00 PM</p>
+                  <p>Therapist: Jane Smith</p>
+                </div>
+              </div>
+              <div class="session-card" >
+                <div class="session-details-menu">
+                  <h3>Group Speech Therapy <br> Lincoln Elementary School</h3>
+                  <p>2024-07-01 | 9:00 AM - 10:00 AM</p>
+                  <p>Therapist: John Doe</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="session-main previous-sessions">
+              <h2>Ongoing Sessions</h2>
+              <div class="session-card">
+                <div class="session-details-menu">
+                  <h3>Speech Therapy Session <br> Jane Doe</h3>
+                  <p>2024-06-15 | 3:00 PM - 4:00 PM</p>
+                  <p>Therapist: John Doe</p>
+                </div>
+              </div>
+              <div class="session-card" >
+                <div class="session-details-menu">
+                  <h3>Group Speech Therapy <br> Lincoln Elementary School</h3>
+                  <p>2024-06-01 | 9:00 AM - 10:00 AM</p>
+                  <p>Therapist: Jane Smith</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="session-main previous-sessions">
+              <h2>Recent Sessions</h2>
+              <div class="session-card">
+                <div class="session-details-menu">
+                  <h3>Speech Therapy Session - Jane Doe</h3>
+                  <p>2024-06-15 | 3:00 PM - 4:00 PM</p>
+                  <p>Therapist: John Doe</p>
+                </div>
+              </div>
+              <div class="session-card">
+                <div class="session-details-menu">
+                  <h3>Group Speech Therapy - Lincoln Elementary School</h3>
+                  <p>2024-06-01 | 9:00 AM - 10:00 AM</p>
+                  <p>Therapist: Jane Smith</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock content%}
+      </div>
+
+      
+    </section>
+    <!-- END OF MIDDLE -->
+    
+
+
+  </main>
+  <!-- END OF ASIDE -->
+
+
+  
+
+  <div class="main-tab" id="notification-panel">
+    <div class="notification-header">
+      
+      <h2 class="title">Notifications</h2>
+ 
+    </div>
+    <div class="tabs">
+      <div class="container">
+          <div id="tab-1" class="tab-item-noti tab-border">
+              <p class="hide-sm">Unread</p>
+          </div>
+          <div id="tab-2" class="tab-item-noti">
+              <p class="hide-sm">Read</p>
+          </div>
+          <div id="tab-3" class="tab-item-noti">
+              <p class="hide-sm">All</p>
+          </div>
+      </div>
+    </div>
+    <section class="tab-content">
+      <div class="container">
+        <!-- tab 1 content -->
+        <div id="tab-1-content-noti" class="tab-content-item-noti">
+          <div class="notification-card unread">
+            <span class="unread-dot"></span>
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">event</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">Appointment Scheduled</h3>
+                <p class="notification-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab 2 content -->
+        <div id="tab-2-content-noti" class="tab-content-item-noti">
+          <div class="notification-card">
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">lock</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">Account Locked</h3>
+                <p class="notification-date">June 26, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab 3 content -->
+        <div id="tab-3-content-noti" class="tab-content-item-noti">
+          <div class="notification-card">
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">system_update</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">System Update</h3>
+                <p class="notification-date">June 29, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        
+          <div class="notification-card unread">
+            <span class="unread-dot"></span>
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">event</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">Appointment Scheduled</h3>
+                <p class="notification-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        
+          <div class="notification-card unread">
+            <span class="unread-dot"></span>
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">event</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">Appointment Scheduled</h3>
+                <p class="notification-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        
+          <div class="notification-card unread">
+            <span class="unread-dot"></span>
+            <div class="notification-header">
+              <div class="notification-icon">
+                <i class="material-icons">event</i>
+              </div>
+              <div class="notification-info">
+                <h3 class="notification-title">Appointment Scheduled</h3>
+                <p class="notification-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="notification-content">
+              <p class="notification-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>
+        <div class="notification-buttons">
+          <button type="button" class="mark-all-read">Mark All as Read</button>
+          <button type="button" class="delete-all">Delete All</button>
+        </div>
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  
+  <div id="setting" class="flex">
+    <div class="header flex-vertical">
+        <div class="gear"><i class="bi bi-gear"></i></div>
+        <h2 class="title">Settings</h2>
+        <div class="close"><i class="bi bi-arrow-right"></i></div>
+    </div>
+    <div class="setting-list scrollable scroll-visible flex column grow">
+        <div class="setting-item-box hover pointer flex-vertical">
+            <input type="checkbox" name="theme-color" id="theme-color">
+            <label for="theme-color">Enable dark mode</label>
+        </div>
+        <div class="setting-item-box hover pointer flex-vertical">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember next visits</label>
+        </div>
+        <div class="setting-item-box hover pointer flex-vertical">
+            <input type="checkbox" name="allow-notify" id="allow-notify">
+            <label for="allow-notify">Allow notifications</label>
+        </div>
+        <div class="setting-item-box hover pointer flex-vertical">
+            <input type="checkbox" name="hide-menu" id="hide-menu">
+            <label for="hide-menu">Hide menus</label>
+        </div>
+        <div class="setting-item-box hover pointer flex-vertical theme-btn">
+          <span class="material-icons-sharp active">light_mode</span>
+          <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </div>
+    <div class="action">
+      <button class="btn">Save</button>
+    </div>
+  </div>
+
+
+  <div class="bg-blur" id="bg-blur"></div>
+  <div class="modal-universal" id="modal-universal">
+  
+  </div>
+ 
+  </div>
+
+
+
+  <script>
+    // Your JavaScript code here
+    let initialTheme = '{{ initial_theme }}';
+    // Rest of the JavaScript code
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{{url_for('static', filename='js/htmx.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/admin.js')}}"></script>
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  {% block scripts%}
+  <script>
+    const chart = document.querySelector("#chart").getContext('2d');
+
+    new Chart(chart, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+        datasets: [
+          {
+            label: 'Individual Session',
+            data: [29, 38, 36, 58, 65, 65, 45, 54, 78, 65, 45],
+            borderColor: 'red',
+            borderWidth: 2
+          },
+          {
+            label: 'Group Session',
+            data: [3, 4, 2, 8, 9, 5, 3, 4, 7, 5, 9],
+            borderColor: 'blue',
+            borderWidth: 2
+          },
+          {
+            label: 'Couple Session',
+            data: [1, 11, 12, 18, 19, 15, 13, 14, 17, 15, 19],
+            borderColor: 'purple',
+            borderWidth: 2
+          },
+        
+        ]
+      },
+      options: {
+        resposive: true
+      }
+    })
+
+
+    
+
+    const btnAllSessions = document.querySelector('#btn-all-sessions');
+    const dashRight = document.querySelector('#dash-right');
+
+
+    btnAllSessions.addEventListener('click', ()=>{
+      dashRight.classList.toggle('active')
+    })
+
+  </script>
+  {% endblock scripts %}
+</body>
+</html>

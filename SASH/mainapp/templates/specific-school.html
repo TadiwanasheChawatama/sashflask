@@ -1,0 +1,103 @@
+
+{% extends "admin.html" %}
+{% block title %}School Info{%endblock title%}
+{% block content %}
+<div class="school-details">
+  <h2>{{school.school_name}}</h2>
+  <div class="school-information">
+    <div>
+      <div class="info-card">
+        <h3>School Information</h3>
+        <p><strong>Address:</strong> {{school.address}}</p>
+        <p><strong>Phone:</strong> {{school.contact_number}}</p>
+        <p><strong>Principal:</strong>{{school.school_principal}}</p>
+        <p><strong>Email:</strong> <a class="btn-link primary" href="{{school.email}}">{{school.email}}</a></p>
+        <p><strong>Enrollment:</strong> 450 students</p>
+      </div>
+      <div class="info-card">
+        <h3>Therapy Contract</h3>
+        <p><strong>Start Date:</strong>{{school.date_of_registration}}3</p>
+        <p><strong>End Date:</strong> June 30, 2024</p>
+        <p><strong>Services:</strong> Speech and Language Therapy</p>
+        <p><strong>Therapist:</strong> Ms. Emily Johnson</p>
+        <p><a href="{{url_for('assign_school_therapist', school_id=school.id )}}" class="btn-link black">Assign Therapist</a></p>
+      </div>
+    </div>
+    <div class="school-statistics">
+      <div class="stat-card">
+        <span class="stat-value">{{school.sessions|length}}</span>
+        <span class="stat-label">Total Sessions</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{{school.students|length}}</span>
+        <span class="stat-label">Total Students</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">85%</span>
+        <span class="stat-label">Session Completion</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">90%</span>
+        <span class="stat-label">Activity</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label"><a href="{{url_for("school_timetable", school_id = school.id)}}">View TimeTable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="student-list">
+    <div class="header">
+      <h3>Students</h3>
+      <a href="{{url_for('addstudent', school_id=school.id)}}" class="btn btn-primary display-flex"><i class="material-icons">add</i></a>
+    </div>
+    <ul>
+      {% if school.students %}
+      {% for student in school.students %}
+      <li>
+          <span class="student-name">{{student.firstname}} {{student.lastname}} </span>
+          <span class="student-grade">{{student.email}}</span>
+          <span class="session-count">8 sessions</span>
+        </a>
+      </li>
+      {%endfor%}
+      <a href="{{url_for('students')}}" class="btn-link black">View More</a>
+      {%else%}
+      <li>
+        <span>No Students </span>
+  </li>
+      {%endif%}
+    </ul>
+  </div>
+
+  <div class="session-list">
+    <div class="header">
+      <h3>Therapy Sessions</h3>
+      <a href="{{url_for('scheduleschoolsession', school_id=school.id)}}" class="btn-primary display-flex"  ><i class="material-icons" >add</i></a>
+    </div>
+    <ul>
+      {% if school.sessions %}
+      {% for session in school.sessions%}
+      <li>
+        <a href="{{url_for('schoolsessioninfo', school_id=school.id, session_id=session.id)}}">
+          <span class="session-date">{{session.date}}</span>
+          <span class="session-details">{{session.diagnosis}}</span>
+        </a>
+      </li>
+      {%endfor%}
+      <a href="{{url_for('sessionmenu')}}" class="btn-link black">View More</a>
+      {%else%}
+      <li>
+        <span>No School Sessions </span>
+      </li>
+      {%endif%}
+    </ul>
+  </div>
+</div>
+{% endblock content%}
+
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

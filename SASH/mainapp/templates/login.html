@@ -1,0 +1,63 @@
+<div id="signin">
+
+    <form action="{{ url_for('login') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-3">Enter Your Credentials</legend>
+        </fieldset>
+        <div id="error-message"></div>
+        <div>
+          {{ form.email.label(class="form-control-label")}}
+          {% if form.email.errors%}
+          {{ form.email(class="form-control is-invalid")}}
+              <div class="invalid-feedback">
+                  {%for error in form.email.errors%}
+                  <span>{{error}}</span>
+                  {%endfor%}
+              </div>
+      {%else%}
+      {{ form.email(class="form-control")}}
+      {%endif%}
+        </div>
+        <div>
+          {{ form.password.label(class="form-control-label")}}
+          {% if form.password.errors%}
+          {{ form.password(class="form-control is-invalid")}}
+              <div class="invalid-feedback">
+                  {%for error in form.password.errors%}
+                  <span>{{error}}</span>
+                  {%endfor%}
+              </div>
+      {%else%}
+      {{ form.password(class="form-control")}}
+      {%endif%}
+
+        </div>
+        {{ form.submit(class="form-control") }}
+    </form>
+  </div>
+
+  <script>
+    loginBtn.addEventListener('click', () => {
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(new FormData(loginForm))
+      })
+     .then(response => response.json())
+     .then(data => {
+        if (data.error) {
+          alert(data.error)
+          // Display error message to the user
+          //const errorMessage = document.getElementById('error-message');
+          //errorMessage.innerHTML = `<h2>${data}</h2>`;
+        } else {
+          // Login successful, update the modal content
+          document.getElementById('modal-universal').innerHTML = data;
+          document.getElementById('modal-universal').classList.remove('active');
+        }
+      });
+    });
+  </script>

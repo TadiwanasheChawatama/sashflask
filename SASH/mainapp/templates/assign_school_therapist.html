@@ -1,0 +1,46 @@
+
+{% extends "admin.html" %}
+{% block title %} Assign New Therapist{%endblock title%}
+{% block content %}
+<div class="container">
+     <form method="POST" action="" class="session-form">
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3">Assign Therapist</legend>
+        </fieldset>
+     <div class="row">
+         <div class="mb-3">
+         
+             {{ form.therapist.label(class="form-control-label")}}
+             {% if form.therapist.errors%}
+             {{ form.therapist(class="form-control is-invalid")}}
+                 <div class="invalid-feedback">
+                     {%for error in form.therapist.errors%}
+                     <span>{{error}}</span>
+                     {%endfor%}
+                 </div>
+            {%else%}
+            {{ form.therapist(class="form-control")}}
+            {%endif%}
+         </div>
+     <div class="row">
+         <div class="mb-3">
+            {{ form.submit(class="form-control btn-primary")}}
+         </div>
+     </div>
+     </form>
+
+    </div>
+
+  {% endblock content%}
+  
+
+  {% block scripts%}
+    <script>
+    </script>
+  {% endblock scripts %}
+
+
+
+
+

@@ -1,0 +1,165 @@
+{% extends "admin.html" %}
+{% block title %}User Info{%endblock title%}
+{% block content %}
+<div class="school-details">
+  <div class="user-profile-photo">
+    <img src="{{profile_image}}" alt="Profile">
+  </div>
+  <h1>User Profile</h1>
+  <div class="school-information">
+    <div>
+      <div class="info-card">
+        <h3>User Information</h3>
+        <h1><strong>{{user.firstname}} {{user.lastname}}</strong></h1>
+        <p><strong>Address:</strong> {{user.address}}</p>
+        <p><strong>Role:</strong> {{user.role}}</p>
+        <p><strong>Phone:</strong>{{user.phonenumber}}</p>
+        <p><strong>Email:</strong> <a href="mailto:{{user.email}}"></a>{{user.email}}</p>
+        <a href="{{url_for('update_user', user_id = user.id)}}" class="btn-link black">Update</a>
+      </div>
+    </div>
+    <div class="school-statistics">
+      <div class="stat-card">
+        <span class="stat-value">92</span>
+        <span class="stat-label">Total Sessions</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">45</span>
+        <span class="stat-label">Total Students</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">8</span>
+        <span class="stat-label">Total Schools</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">90%</span>
+        <span class="stat-label">Activity</span>
+      </div>
+    </div>
+  </div>
+  <div class="session-list">
+    <div class="header">
+      <h3>Therapy Sessions</h3>
+    </div>
+    <ul>
+      <li>
+        <h2>School Sessions </h2>
+    </li>
+    {%if schoolsession%}
+    {%for session in schoolsession%}
+      <li>
+        <a href="{{url_for('schoolsessioninfo')}}">
+          <span class="session-date">{{session.date}}</span>
+          <span class="session-details">{{session.diagnosis}}</span>
+          <span class="session-details">{{session.session_school.school_name}}</span>
+        </a>
+      </li>
+      {%endfor%}
+      <a href="{{url_for('sessionmenu')}}" class="btn-link black">View More</a>
+      {%else%}
+      <li>
+          <span>No School Sessions </span>
+    </li>
+      {%endif%}
+
+
+      <li>
+        <h2>Client Sessions </h2>
+    </li>
+    {%if clientsessions%}
+    {%for session in clientsessions%}
+      <li>
+        <a href="{{url_for('schoolsessioninfo')}}">
+          <span class="session-date">{{session.date}}</span>
+          <span class="session-details">{{session.diagnosis}}</span>
+          <span class="session-details">{{session.session_school}}</span>
+        </a>
+      </li>
+      {%endfor%}
+      <a href="{{url_for('sessionmenu')}}" class="btn-link black">View More</a>
+      {%else%}
+      <li>
+          <span>No Client Sessions </span>
+    </li>
+      {%endif%}
+
+
+    </ul>
+  </div>
+  <div class="student-list">
+      <div class="header">
+          <h3>Clients</h3>
+        </div>
+    <ul>
+      {%if clients%}
+      {%for client in clients%}
+        <li>
+            <a href="{{url_for('students')}}">
+                <span class="student-name">{{client.firstname}} {{client.lastname}} </span>
+                <span class="student-grade">{{client.email}}</span>
+                <span class="session-count">8 sessions</span>
+            </a>
+        </li>
+        {%endfor%}
+        <a href="{{url_for('students')}}" class="btn-link black">View More</a>
+        {%else%}
+        <li>
+            <span>No Clients </span>
+      </li>
+        {%endif%}
+    </ul>
+</div>
+  <div class="student-list">
+      <div class="header">
+          <h3>Students</h3>
+        </div>
+    <ul>
+      {%if students%}
+      {%for student in students%}
+        <li>
+            <a href="{{url_for('students')}}">
+              <span class="student-name">{{student.firstname}} {{student.lastname}} </span>
+              <span class="student-grade">{{student.email}}</span>
+              <span class="session-count">8 sessions</span>
+            </a>
+        </li>
+        {%endfor%}
+        <a href="{{url_for('students')}}" class="btn-link black">View More</a>
+        {%else%}
+        <li>
+            <span>No Students </span>
+      </li>
+        {%endif%}
+    </ul>
+</div>
+
+<div class="student-list">
+    <div class="header">
+        <h3>Schools</h3>
+    </div>
+    <ul>
+      {%if schools %}
+        {%for school in schools%}
+        <li>
+            <a href="{{url_for('students')}}">
+                <span class="student-name">{{school.school_name}}</span>
+                <span class="session-count">12 sessions</span>
+            </a>
+        </li>
+        {%endfor%}
+      <a href="{{url_for('schools')}}" class="btn-link black">View More</a>
+      {%else%}
+      <li>
+        <span>No Schools </span>
+  </li>
+      {%endif%}
+    </ul>
+</div>
+</div>
+{% endblock content%}
+
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

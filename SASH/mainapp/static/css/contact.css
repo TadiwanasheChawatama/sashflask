@@ -1,0 +1,172 @@
+
+
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    color: #fff;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 500;
+}
+p{
+    font-size: 1.3rem;
+}
+.btn{
+    display: inline-block;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 30px;
+    margin: 20px 0;
+    border: 0;
+}
+.btn:hover{
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+
+/* Contact Page */
+.contact{
+    /* position: relative; */
+    width:100% ;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.contact-form{
+    /* position: relative; */
+    background: #292727;
+    width: calc(100% -400px);
+    padding: 60px 40px 20px;
+}
+.contact-form form{
+    width: 100%;
+}
+
+.contact-form .row{
+    width: 100%;
+    display: flex;
+}
+.contact-form .input50{
+    width: 50%;
+    margin: 0 10px;
+}
+.contact-form .input100{
+    width: 100%;
+    margin: 0 10px;
+}
+.contact-form .row input, 
+.contact-form .row textarea{
+    margin-bottom: 1.3rem;
+    width: 100%;
+    border-radius: 2px;
+    background: #292727;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    line-height: 1.3rem;
+    outline: none;
+}
+
+.contact-form .row input:focus, 
+.contact-form .row textarea:focus{
+    border: var(--primary-color) 1px solid;
+}
+.contact-form .row input::placeholder, 
+.contact-form .row textarea::placeholder{
+    color:#fff;
+}
+
+.contact-form .row textarea{
+    height: 150px;
+}
+
+.contact-info{
+    /* position:relative; */
+    width: 350px;
+    background: #292727;
+    color: #fff;
+    padding: 60px 40px 50px;
+}
+.contact-info .info-box{
+    display: block;
+    margin-bottom: 15px;
+}
+.contact-info .info-box .contact-icon{
+    width: 35px;
+    margin-right: 40px;
+}
+.contact-info .info-box .details h4{
+    color: var(--secondary-color);
+}
+.contact-info .info-box .details p,.contact-info .info-box .details a{
+    color: #fff;
+}
+.primary-btn {
+    padding: 0.7rem 1rem;
+    height: 2.7rem;
+    display: block;
+    border: 0;
+    border-radius: 2px;
+    font-weight: 500;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s;
+    width: 100%;
+}
+.primary-btn:hover{
+    background: var(--secondary-color);
+}
+
+
+
+@media(max-width:1068px){
+    .contact-info .info-box{
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .section{
+        padding: 100px 40px;
+    }
+
+    .contact{
+        flex-direction: column;
+    }
+    .contact-form{
+        width: 100%;
+        padding: 30px 30px 20px;
+    }
+    .contact-info {
+        width: 100%;
+        margin-top: 20px;
+        padding: 30px 30px 20px;
+    }
+   
+}
+
+@media(max-width:700px){
+    section{
+        padding: 70px 50px 50px;
+    }
+    .contact-form .row{
+        flex-direction: column;
+    }
+   
+    .contact-form .input100,
+    .contact-form .input50{
+        width: 100%;
+        margin: 0;
+    }
+}

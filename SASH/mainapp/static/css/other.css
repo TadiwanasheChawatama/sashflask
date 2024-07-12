@@ -1,0 +1,1070 @@
+/* General Styles */
+.single-student {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .single-student div .header{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+  }
+  
+  .session {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .service {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .bg-purple-light {
+    background-color: #e6e0ff;
+  }
+  
+  .details h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .details p {
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .card-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-details small {
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .delete-session {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #dc3545;
+    transition: color 0.3s ease;
+  }
+  
+  .delete-session:hover {
+    color: #b02a37;
+  }
+  
+ 
+  .student-information .header .edit {
+    display: flex;
+    align-items: center;
+    color: #6c757d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .student-information .header .edit:hover {
+    color: #495057;
+  }
+
+
+  .client-info h2,.client-info p{
+    color: var(--color-dark);
+  }
+
+
+  .client-case {
+    display: flex;
+    justify-content: space-between;
+  }
+  .evaluation-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .evaluation-card {
+    background-color: var(--color-light);
+    max-width: 400px;
+    /* width: 400px; */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+    margin: 15px;
+  }
+  
+  .evaluation-card .card-header {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .evaluation-card p{
+    font-size: 1.1rem;
+  }
+  .evaluation-card .card-title {
+    color: var(--color-card);
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .evaluation-card .card-content {
+    padding: 1rem;
+    text-align: left;
+    line-height: 1.5;
+    font-size: 14px;
+    color: var(--color-dark);
+  }
+
+  .therapist-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 49%;
+  }
+  
+  .therapist-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .therapist-info .date-time,
+  .therapist-info .bonds {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .therapist-info .date-time p,
+  .therapist-info .bonds p {
+    margin: 0;
+  }
+  
+  .therapist-info .date-time small,
+  .therapist-info .bonds small {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .therapist-info .danger {
+    color: #dc3545;
+  }
+  
+  .form-response {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .form-response h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
+  
+  .form-response p {
+    margin: 5px 0;
+  }
+.student-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .student-infor {
+    padding: 20px;
+    width: 49%;
+  }
+  
+  .student-infor p {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+  }
+  .student-infor a {
+   text-decoration: none;
+  }
+  .student-infor span {
+   color: var(--secondary-color);
+  }
+  
+  .student-infor h4 {
+    margin: 20px 0 10px;
+    color: var(--color-dark);
+  }
+  
+  .student-infor hr {
+    border: none;
+    border-top: 1px solid var(--color-dark);
+    margin: 20px 0;
+  }
+  
+  /* Therapist Info Styles */
+  .therapist-info {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 35%;
+    text-align: center;
+  }
+  
+  .therapist-info img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .therapist-info h4 {
+    margin: 10px 0;
+    color: var(--color-dark);
+  }
+  
+  .date-time,
+  .bonds,
+  .therapist-info div {
+    margin-top: 20px;
+  }
+  
+  .date-time p,
+  .bonds p,
+  .therapist-info div p {
+    margin-bottom: 5px;
+    color: var(--color-dark);
+    font-size: 14px;
+  }
+  
+  .date-time small,
+  .bonds small,
+  .therapist-info div small {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+  
+  .session-info {
+    background-color:var(--color-light);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .session-header h2 {
+    margin-bottom: 4px;
+  }
+  
+  .session-header p,
+  .session-client-info p,
+  .session-notes p,
+  .session-outcome p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--color-dark);
+  }
+  
+  .session-client-info,
+  .session-notes,
+  .session-outcome {
+    margin-top: 20px;
+  }
+
+  
+
+  .student-list li {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+
+  .student-list h4 {
+    margin-bottom: 4px;
+  }
+  
+  .student-list p {
+    font-size: 14px;
+    color: var(--color-dark);
+  }
+  
+
+  .student-list{
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .student-list h3 {
+    margin-bottom: 12px;
+  }
+  
+
+  
+
+  
+  .student-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-card h4 {
+    margin-bottom: 4px;
+  }
+  
+  .student-card p {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+  }
+  
+  .student-card .btn {
+    display: block;
+    text-align: center;
+  }
+  
+
+.session-form-container {
+    background-color: var(--color-light);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .form-control {
+    width: 100%;
+    color: var(--color-dark);
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    background: var(--color-white);
+  }
+  .form-control:active {
+    border: 1px solid var(--primary-color);
+    background: var(--color-light);
+    color: var(--color-dark);
+  }
+  .form-control:focus {
+    border: 1px solid var(--primary-color);
+    background: var(--color-light);
+    color: var(--color-dark);
+  }
+.form-control-label{
+  font-size: 16px;
+}
+.form-control.btn-primary{
+  color: var(--color-white);
+  background: var(--primary-color);
+}
+.form-control.btn-primary:hover{
+  background: var(--secondary-color);
+}
+  
+
+  
+  .student-cards-container {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .student-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 16px;
+  }
+  
+
+  
+  .student-card-header {
+    margin-bottom: 8px;
+  }
+  
+  .student-card-header h4 {
+    margin-bottom: 4px;
+  }
+  
+  .student-card-body p {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 4px;
+  }
+  
+  .student-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+
+ 
+
+  
+
+  .school-form {
+    background-color: var(--color-white);
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .client-form {
+    background-color: var(--color-white);
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .form-container {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .session-form {
+    /* background-color: var(--color-white); */
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.4);
+  }
+  
+
+
+  .client-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+.session-card-header p{
+  color: var(--color-dark);
+}
+
+
+.client-details-container {
+  background: transparent;
+  /* padding: 20px; */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.client-info {
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background: var(--color-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  gap: 10px;
+}
+
+.client-info h2 {
+  margin-bottom: 10px;
+}
+
+.client-info p {
+  font-size: 14px;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.session-cards-container {
+  padding: 16px;
+  border-radius: 4px;
+  background: var(--color-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.session-cards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 16px; */
+  color: var(--color-dark);
+}
+
+.session-card-header {
+  margin-bottom: 8px;
+}
+
+.session-cards-header h3 {
+  margin-bottom: 0;
+}
+
+.session-tabs {
+  display: flex;
+}
+
+.session-tab {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.session-tab:hover{
+  background-color: var(--primary-color);  
+  color: var(--color-card);
+}
+
+.session-tab.active {
+  background-color: var(--primary-color);
+  color: var(--color-card);
+}
+
+.session-card {
+  background: var(--color-light);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+
+.session-card-header h4 {
+  margin-bottom: 4px;
+  color: var(--color-dark);
+}
+
+.session-card-body p {
+  font-size: 14px;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.session-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+
+
+
+/* past session */
+.session-details {
+    /* max-width: 800px; */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-light);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .session-details h2 {
+    color: var(--color-dark);
+    margin-bottom: 20px;
+  }
+  
+  .session-details h3 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+  }
+  
+  .session-overview,
+  .session-goals,
+  .session-activities,
+  .session-notes,
+  .session-recommendations {
+    margin-bottom: 30px;
+  }
+
+  .session-overview p,
+  .session-goals li,
+  .session-activities p,
+  .session-notes p,
+  .session-recommendations li{
+    color: var(--color-dark);
+    font-size: 14px;
+  }
+
+
+
+  .activity-card {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .activity-card h4 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+  }
+  .activity-card p {
+    color: var(--color-dark);
+    font-size: 16px;
+  }
+  
+  .session-notes p,
+  .session-recommendations li {
+    line-height: 1.5;
+  }
+
+
+
+  .btn-link{
+    color: var(--color-card);
+    padding: 5px 10px;
+    text-decoration: none;
+    background: transparent;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
+  .btn-link.primary{
+    color: var(--color-primary);
+    padding: 5px 10px;
+    text-decoration: none;
+    background: transparent;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
+  .btn-link:hover{
+    color: var(--secondary-color);
+  }
+  .btn-link.black{
+    color: var(--color-dark);
+    padding: 5px 10px;
+    text-decoration: none;
+    background: transparent;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
+  .btn-link.black:hover{
+    color: var(--primary-color);
+  }
+  .btn-link.primary:hover{
+    color: var(--secondary-color);
+  }
+
+
+
+
+
+/* ------------------------------------school details------------------------------------------------ */
+.session-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header input[type="date"] {
+  padding: 5px 10px;
+  border: 1px solid var(--secondary-color);
+  background: var(--primary-color);
+  border-radius: 8px;
+}
+
+/* Session Info */
+.session-info h2 {
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.session-info p {
+  margin-bottom: 5px;
+}
+
+.session-client-info,
+.session-notes,
+.session-outcome,
+.student-list {
+  margin-top: 20px;
+}
+
+.session-client-info h3,
+.session-notes h3,
+.session-outcome h3,
+.student-list h3 {
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+/* Student Cards */
+
+
+.student-list .student-card {
+  background-color: var(--color-light);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.student-list .student-card h4 {
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.student-list .student-card p {
+  margin-bottom: 5px;
+  color: var(--color-dark);
+}
+
+
+/* Back Button */
+.back-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+/* specific school */
+
+
+.school-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .school-details h2 {
+    color: var(--color-dark);
+    margin-bottom: 20px;
+  }
+  
+
+  .school-information{
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .school-information:first-child{
+   width: 49%;
+  }
+  .info-card {
+    background-color: var(--color-light);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .info-card p {
+    color: var(--color-dark);
+    font-size: 1.5rem;
+  }
+  .info-card h3 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+  }
+  
+  .student-list,
+  .session-list {
+    margin-bottom: 30px;
+  }
+  
+  .student-list h3,
+  .session-list h3 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+  }
+  
+  .student-list ul,
+  .session-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .student-list a{
+    background-color: var(--color-light);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+  }
+  
+  .session-list a {
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    /* align-items: center; */
+  }
+  
+.student-list .btn-primary{
+  background: var(--primary-color);
+  padding: 3px;
+}
+
+.session-list .btn-primary{
+  background: var(--primary-color);
+  flex-direction: row;
+  padding: 3px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+  .student-name,
+  .student-grade,
+  .session-count,
+  .session-date,
+  .session-details {
+    margin: 0;
+    color: var(--color-dark);
+  }
+  
+  .student-name,
+  .session-date {
+    font-weight: bold;
+  }
+
+  .school-statistics {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .stat-card {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+  }
+  .stat-value span{
+    color: var(--secondary-color);
+  }
+  .stat-label {
+    font-size: 1.2rem;
+  }
+
+
+/* ------------------------------------ end school details------------------------------------------------ */
+
+/* --------------------------------------session main menu------------------------------------------------- */
+
+
+.sessions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.session-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:20px;
+}
+
+
+.upcoming-sessions,
+.previous-sessions {
+  margin-top: 40px;
+}
+
+.session-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+.session-card .material-icons{
+  color: var(--primary-color);
+}
+.session-details-menu{
+  background:transparent;
+}
+.session-details-menu h3 {
+  margin-bottom: 4px;
+  background: transparent;
+}
+
+.session-details-menu p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: var(--color-dark);
+}
+.session-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+}
+
+/* ----------------------------------------------------------end of session main menu ------------------------------ */
+
+
+
+@media (max-width: 1060px) {
+
+
+.evaluation-card {
+  background-color: var(--color-light);
+  width: 100%;
+  margin: 5px auto;
+}
+.evaluation-cards {
+  gap: 9px;
+  margin: 0;
+}
+.single-student {
+  padding: 0;
+}
+}
+
+
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+  
+    .student-infor,
+    .therapist-info {
+      width: 100%;
+
+      margin-bottom: 20px;
+    }
+    .evaluation-card {
+        width: 100%;
+    }
+
+    .student-container{
+        flex-direction: column;
+    }
+    .session-cards-container {
+      padding: 0;
+    }
+    .session-tab {
+      padding: 4px 8px;
+    }
+    .session-card {
+      flex-direction: column;
+    }
+
+    .session-actions {
+      width: 100%;
+      background: var(--color-light);
+      padding: 10px;
+      gap: 10px;
+      justify-content: center;
+
+    }
+    .info-card {
+      width: 90%;
+    }
+    .school-details {
+      padding: 0;
+    }
+    .school-information{
+      flex-direction: column;
+    }
+    .school-statistics{
+      width: 90%;
+      margin: 20px auto;
+    }
+  }

@@ -1,0 +1,59 @@
+
+{% extends "admin.html" %}
+{% block title %}Students{%endblock title%}
+{% block content %}
+
+<div class="student_search">
+  <div class="search-bar">
+    <div>
+      <span class="search-icon material-icons-sharp">search</span>
+      <input type="search" id="searchInput" placeholder="Search Students" class="search-input">
+    </div>
+    <div>
+      <label for="searchBy" class="search-label">Search by:</label>
+      <select id="searchBy" name="search-by" class="search-select">
+        <option value="all">All Students</option>
+        <option value="name">Name</option>
+        <option value="grade">School</option>
+        <option value="id">Class</option>
+      </select>
+    </div>
+  </div>
+</div>
+</br>
+<table class="tbl-list">
+  <thead>
+      <tr>
+          <th>#ID</th>
+          <th><span class="las la-sort"></span> FULLNAME</th>
+          <th class="tbl-collapse"><span class="las la-sort"></span> SCHOOL</th>
+          <th><span class="las la-sort"></span> ACTIONS</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for student in all_students%}
+      <tr>
+          <td>#3023</td>
+          <td>
+                <h4>{{student.firstname}} {{student.lastname}}</h4>
+          </td>
+          <td class="tbl-collapse">
+            <h4>school</h4>
+          </td>
+          <td>
+            <div class="tbl-actions">
+              <a href="{{url_for('studentprofile', student_id = student.id)}}"><span class="material-icons">visibility</span></a>
+              <a href=""><span class="material-icons-sharp">delete</span></a>
+            </div>
+          </td>
+        </tr>        
+        {% endfor%}     
+  </tbody>
+</table>
+{%endblock content%}
+
+
+{% block scripts%}
+<script>
+</script>
+{% endblock scripts %}

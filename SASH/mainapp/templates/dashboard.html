@@ -1,0 +1,261 @@
+<div class="dashboard-inner-content">
+  <div>
+    <div class="header">
+      <h1>Overview</h1>
+      <div class="overview-date">
+
+        <input type="date" title='date' value={{current_date}} readonly>
+        <i class="material-icons" id="btn-all-sessions">event_available</i>
+      </div>
+    </div>
+
+    <div class="cards" id="cards">
+      <div class="card"  hx-get='/sessionmenu' hx-target="closest .middle-inner" hx-swap="innerHTML">
+        <div class="content">
+          <div class="num">90</div>
+          <div class="name">Sessions</div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-users"></i>
+        </div>
+      </div>
+      <!-- END CARD 1 -->
+
+      <div class="card"  hx-get='/allstudents'   hx-target="#dashboard-content" hx-swap="innerHTML">
+        <div class="content">
+          <div class="num">13000</div>
+          <div class="name">Students</div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+      </div>
+      <!-- END CARD 2 -->
+      <div class="card" hx-get='/all_clients' hx-target="#dashboard-content" hx-swap="innerHTML">
+        <div class="content">
+          <div class="num">502</div>
+          <div class="name">Individuals</div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+      </div>
+
+      <!-- END CARD 3 -->
+    </div>
+    <!-- END OF CARDS -->
+
+    <div class="monthly-report">
+      <div class="report">
+        <h3>Sessions Completed</h3>
+        <div>
+          <details>
+            <h1>142</h1>
+            <h6 class="success">+5.2%</h6>
+          </details>
+          <p class="text-muted">Compared to 135 last month</p>
+        </div>
+      </div>
+      <div class="report">
+        <h3>Donations Received</h3>
+        <div>
+          <details>
+            <h1>$12,840</h1>
+            <h6 class="success">+3.7%</h6>
+          </details>
+          <p class="text-muted">Compared to $12,400 last month</p>
+        </div>
+      </div>
+      <div class="report">
+        <h3>Clients Served</h3>
+        <div>
+          <details>
+            <h1>87</h1>
+            <h6 class="danger">-2.2%</h6>
+          </details>
+          <p class="text-muted">Compared to 89 last month</p>
+        </div>
+      </div>
+    </div>
+    <!-- END OF MONTLY REPORT -->
+
+  
+    <div class="fast-payment">
+      <h2>Volunteer Opportunities</h2>
+      <div class="badges">
+        <div class="badge">
+          <span class="material-icons-sharp">add</span>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>Group Therapy</h5>
+            <h4>2 hrs</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-success"></span>
+          <div>
+            <h5>Administrative</h5>
+            <h4>4 hrs</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>Outreach</h5>
+            <h4>3 hrs</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-danger"></span>
+          <div>
+            <h5>Fundraising</h5>
+            <h4>6 hrs</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="fast-payment">
+      <h2>Donation Options</h2>
+      <div class="badges">
+        <div class="badge">
+          <span class="material-icons-sharp">add</span>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>One-Time Donation</h5>
+            <h4>$50</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-success"></span>
+          <div>
+            <h5>Monthly Donation</h5>
+            <h4>$25</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>Sponsor a Session</h5>
+            <h4>$75</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-danger"></span>
+          <div>
+            <h5>Scholarship Fund</h5>
+            <h4>$100</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="fast-payment">
+      <h2>Client Service Packages</h2>
+      <div class="badges">
+        <div class="badge">
+          <span class="material-icons-sharp">add</span>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>Individual Therapy</h5>
+            <h4>$100/session</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-success"></span>
+          <div>
+            <h5>Group Therapy</h5>
+            <h4>$50/session</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-primary"></span>
+          <div>
+            <h5>Family Therapy</h5>
+            <h4>$150/session</h4>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="bg-danger"></span>
+          <div>
+            <h5>Couples Therapy</h5>
+            <h4>$125/session</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END OF FAST PAYMENT -->
+  
+    <canvas id="chart"></canvas>
+
+
+
+  </div>
+
+  <div class="dash-right" id="dash-right">
+    
+    <div class="session-main upcoming-sessions">
+      <h2>Upcoming Sessions</h2>
+      <div class="session-card">
+        <div class="session-details-menu">
+          <h3>Speech Therapy Session <br> John Doe</h3>
+          <p>2024-06-25 | 2:00 PM - 3:00 PM</p>
+          <p>Therapist: Jane Smith</p>
+        </div>
+      </div>
+      <div class="session-card" >
+        <div class="session-details-menu">
+          <h3>Group Speech Therapy <br> Lincoln Elementary School</h3>
+          <p>2024-07-01 | 9:00 AM - 10:00 AM</p>
+          <p>Therapist: John Doe</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-main previous-sessions">
+      <h2>Ongoing Sessions</h2>
+      <div class="session-card">
+        <div class="session-details-menu">
+          <h3>Speech Therapy Session <br> Jane Doe</h3>
+          <p>2024-06-15 | 3:00 PM - 4:00 PM</p>
+          <p>Therapist: John Doe</p>
+        </div>
+      </div>
+      <div class="session-card" >
+        <div class="session-details-menu">
+          <h3>Group Speech Therapy <br> Lincoln Elementary School</h3>
+          <p>2024-06-01 | 9:00 AM - 10:00 AM</p>
+          <p>Therapist: Jane Smith</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-main previous-sessions">
+      <h2>Recent Sessions</h2>
+      <div class="session-card">
+        <div class="session-details-menu">
+          <h3>Speech Therapy Session - Jane Doe</h3>
+          <p>2024-06-15 | 3:00 PM - 4:00 PM</p>
+          <p>Therapist: John Doe</p>
+        </div>
+      </div>
+      <div class="session-card">
+        <div class="session-details-menu">
+          <h3>Group Speech Therapy - Lincoln Elementary School</h3>
+          <p>2024-06-01 | 9:00 AM - 10:00 AM</p>
+          <p>Therapist: Jane Smith</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

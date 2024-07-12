@@ -1,0 +1,152 @@
+
+{% extends "admin.html" %}
+{% block title %}Messages{%endblock title%}
+{% block content %}
+  <div class="student_search">
+    <div class="search-bar">
+      <div>
+        <span class="search-icon material-icons-sharp">search</span>
+        <input type="search" id="searchmsg" placeholder="Search Message" class="search-input">
+      </div>
+      <div>
+        <label for="searchBy" class="search-label">Search by:</label>
+        <select name="search-by" class="search-select">
+          <option value="all" selected>All Messages</option>
+          <option value="name">Author</option>
+          <option value="grade">Title</option>
+          <option value="id">Date</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="main-tab">
+    <div class="card-action">
+      <a href="#" class="btn-flat waves-effect waves-light"><i class="material-icons left">add</i>Compose</a>
+      <a href="#" class="btn-flat waves-effect waves-light"><i class="material-icons left">filter_list</i>Filters</a>
+      <a href="#" class="btn-flat waves-effect waves-light"><i class="material-icons left">person</i>Assignment</a>
+    </div>
+    <div class="tabs">
+      <div class="container">
+          <div id="tab-1" class="tab-item tab-border">
+              <p class="hide-sm">Unread</p>
+          </div>
+          <div id="tab-2" class="tab-item">
+              <p class="hide-sm">Read</p>
+          </div>
+          <div id="tab-3" class="tab-item">
+              <p class="hide-sm">All</p>
+          </div>
+      </div>
+    </div>
+    <section class="tab-content">
+      <div class="container">
+        <!-- tab content 1 -->
+        <div id="tab-1-content" class="tab-content-item show">
+          <div id='message-card' class="message-card unread">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/1/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">Tadiwanashe Chawatama</h1>
+                <p class="message-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">Book Appointment</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>    
+          
+        <!-- tab 2 content -->
+        <div id="tab-2-content" class="tab-content-item">
+          <div id='message-card' class="message-card">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/2/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">Tirivashe Mutanho</h1>
+                <p class="message-date">June 26, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">Account Not Accessible</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- tab 3 content -->
+        <div id="tab-3-content" class="tab-content-item">
+          <div id='message-card' class="message-card">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/3/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">SASH Company</h1>
+                <p class="message-date">June 29, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">SystemnUpdate</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+          <div id='message-card' class="message-card unread">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/1/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">Tadiwanashe Chawatama</h1>
+                <p class="message-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">Book Appointment</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+          <div id='message-card' class="message-card unread">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/1/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">Tadiwanashe Chawatama</h1>
+                <p class="message-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">Book Appointment</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+          <div id='message-card' class="message-card unread">
+            <div class="message-header">
+              <div class="message-image">
+                <img src="https://picsum.photos/id/1/60/60" alt="">
+              </div>
+              <div class="message-info">
+                <h1 class="message-author">Tadiwanashe Chawatama</h1>
+                <p class="message-date">June 23, 2024</p>
+              </div>
+            </div>
+            <div class="message-content">
+              <h3 class="message-title">Book Appointment</h3>
+              <p class="message-excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quae, enim, atque laboriosam nisi obcaecati recusandae quidem exercitationem minus natus modi veritatis, nihil minima dignissimos temporibus! Excepturi ipsa minus, non ex provident molestias aut quod autem, illo est laboriosam qui amet ipsam dicta nisi sed. Debitis molestiae eius quibusdam at.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {% endblock content%}
+
+  {% block scripts%}
+  <script>
+  </script>
+{% endblock scripts %}
